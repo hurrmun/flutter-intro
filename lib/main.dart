@@ -13,6 +13,21 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int count = 0;
+
+  //* initState and dispose are default methods from flutter
+  //* other state management tools exist (3rd party)
+  @override
+  void initState() {
+    // TODO: fetch data from database
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

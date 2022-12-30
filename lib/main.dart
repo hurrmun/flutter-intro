@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(const MaterialApp(home: HomeScreen()));
 }
 
 class MyApp extends StatefulWidget {
@@ -120,3 +121,42 @@ class _MyAppState extends State<MyApp> {
 }
 
 //? Why do some variables require const and some don't?
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.green,
+            title: const Text('Flutter is Fun!'),
+          ),
+          body: ElevatedButton(
+            child: const Text("Navigate"),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const AboutScreen()));
+            },
+          )),
+    );
+  }
+}
+
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({Key? key}) : super(key: key);
+  //* Flutter automatically adds a back button with Navigator.pop() when a new page loads
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // backgroundColor: Colors.blue,
+        title: const Text('About'),
+      ),
+    );
+  }
+}
+
+//* use capital R to hard reload

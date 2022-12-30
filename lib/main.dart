@@ -4,9 +4,15 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,21 +42,36 @@ class MyApp extends StatelessWidget {
             //       Icon(Icons.person)
             //     ]),
 
-            body: ListView(
-              scrollDirection: Axis.horizontal,
-              addAutomaticKeepAlives: false, //garbage collection
-              children: [
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.blue,
-                ),
-                Container(
-                  color: Colors.green,
-                )
-              ],
+            floatingActionButton: FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  count++;
+                });
+              },
+            ),
+            body: Center(
+              child: Text(
+                '$count',
+                style: const TextStyle(fontSize: 60),
+              ),
             )
+
+            // body: ListView(
+            //   scrollDirection: Axis.horizontal,
+            //   addAutomaticKeepAlives: false, //garbage collection
+            //   children: [
+            //     Container(
+            //       color: Colors.red,
+            //     ),
+            //     Container(
+            //       color: Colors.blue,
+            //     ),
+            //     Container(
+            //       color: Colors.green,
+            //     )
+            //   ],
+            // ),
             // Stack(
             //   children: [
             //     Container(
@@ -68,13 +89,6 @@ class MyApp extends StatelessWidget {
             //       child: Icon(Icons.verified),
             //     ),
             //   ],
-            // ),
-
-            // floatingActionButton: FloatingActionButton(
-            //   child: const Icon(Icons.add),
-            //   onPressed: () {
-            //     print("pressed!");
-            //   },
             // ),
 
             // bottomNavigationBar: BottomNavigationBar(items: const [

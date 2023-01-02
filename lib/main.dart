@@ -133,8 +133,19 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.green,
             title: const Text('Flutter is Fun!'),
           ),
-          body: ElevatedButton(
-            child: const Text("Navigate"),
+          // body: ElevatedButton(
+          //   child: const Text("Navigate"),
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (_) => const AboutScreen()));
+          //   },
+          // )
+          body: IconButton(
+            icon: Hero(
+              tag: 'elephant-hero',
+              child: Image.asset('assets/images/elephant.jpeg'),
+            ),
+            iconSize: 100,
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (_) => const AboutScreen()));
@@ -151,11 +162,14 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: Colors.blue,
-        title: const Text('About'),
-      ),
-    );
+        appBar: AppBar(
+          // backgroundColor: Colors.blue,
+          title: const Text('About'),
+        ),
+        body: Hero(
+          tag: 'elephant-hero',
+          child: Image.asset('assets/images/elephant.jpeg'),
+        ));
   }
 }
 
